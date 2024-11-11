@@ -1,4 +1,5 @@
 from django.contrib.auth.decorators import login_required
+from django.core.paginator import Paginator
 from django.shortcuts import render, get_object_or_404, redirect
 from .forms import StudentForm
 from django.views.generic import ListView, DetailView
@@ -75,5 +76,10 @@ def student_list(request):
         students = students.filter(
             Q(first_name__icontains=query) | Q(last_name__icontains=query)
         )
+    paginator = Paginator(students, 5)
+    page_number = request.GET.get("page")
+    pagination = paginator.get_page(page_number)
 
-    return render(request, "student_list.html", {"students": students, "query": query})
+    return render(
+        request, "student_list.html", {"pagination": pagination, "query": query}
+    )
