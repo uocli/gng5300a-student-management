@@ -52,3 +52,14 @@ def student_edit(request, pk):
         form = StudentForm(instance=student)
 
     return render(request, "student_edit.html", {"form": form})
+
+
+@login_required
+def delete_student(request, pk):
+    student = get_object_or_404(Student, pk=pk)
+
+    if request.method == "POST":
+        student.delete()
+        return redirect("student-list")
+
+    return render(request, "student_delete_confirm.html", {"student": student})

@@ -25,7 +25,10 @@
                     <td>{{ student.date_of_birth }}</td>
                     <td>{{ student.enrollment_date }}</td>
                     <td>{{ student.grade }}</td>
-                    <td><a href="{% url 'student-detail' student.pk %}">View Details</a></td>
+                    <td>
+                        <a href="{% url 'student-detail' student.pk %}">View</a>
+                        <a href="{% url 'student-delete' student.pk %}">Delete</a>
+                    </td>
                 </tr>
             {% endfor %}
             </tbody>
