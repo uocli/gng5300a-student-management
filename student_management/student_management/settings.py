@@ -15,6 +15,10 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+# Redirect to the login page if user is not authenticated
+LOGIN_URL = "login"
+LOGIN_REDIRECT_URL = "student-list"
+
 
 # Application definition
 

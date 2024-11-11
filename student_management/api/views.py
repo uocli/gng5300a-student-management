@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404, redirect
 from .forms import StudentForm
 from django.views.generic import ListView, DetailView
@@ -19,6 +20,7 @@ class StudentDetailView(DetailView):
 
 
 # View to create a new student
+@login_required
 def student_create(request):
     if request.method == "POST":
         form = StudentForm(request.POST)
@@ -35,6 +37,7 @@ def student_create(request):
 
 
 # View to edit an existing student
+@login_required
 def student_edit(request, pk):
     student = get_object_or_404(Student, id=pk)
 
