@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Student</title>
+</head>
+<body>
+
+<h1>Create New Student</h1>
+
+<form method="post">
+    {% csrf_token %}
+
+    <div>
+        <label for="id_first_name">First Name:</label>
+        <input type="text" name="first_name" id="id_first_name" required maxlength="100">
+    </div>
+
+    <div>
+        <label for="id_last_name">Last Name:</label>
+        <input type="text" name="last_name" id="id_last_name" required maxlength="100">
+    </div>
+
+    <div>
+        <label for="id_email">Email:</label>
+        <input type="email" name="email" id="id_email" required maxlength="100">
+    </div>
+
+    <div>
+        <label for="id_date_of_birth">Date of Birth:</label>
+        <input type="date" name="date_of_birth" id="id_date_of_birth" required>
+    </div>
+
+    <div>
+        <label for="id_enrollment_date">Enrollment Date:</label>
+        <input type="date" name="enrollment_date" id="id_enrollment_date" required>
+    </div>
+
+    <div>
+        <label for="id_grade">Grade:</label>
+        <input type="number" name="grade" id="id_grade" required>
+    </div>
+
+    <button type="submit">Save Student</button>
+</form>
+
+<a href="{% url 'student-list' %}">Back to Student List</a>
+
+</body>
+</html>
