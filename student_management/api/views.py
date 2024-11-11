@@ -1,5 +1,5 @@
 from django.urls import reverse_lazy
-from django.views.generic import ListView, DetailView, CreateView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView
 from .models import Student
 
 
@@ -21,6 +21,21 @@ class StudentDetailView(DetailView):
 class StudentCreateView(CreateView):
     model = Student
     template_name = "student_create.html"
+    fields = [
+        "first_name",
+        "last_name",
+        "email",
+        "date_of_birth",
+        "enrollment_date",
+        "grade",
+    ]
+    success_url = reverse_lazy("student-list")
+
+
+class StudentUpdateView(UpdateView):
+    model = Student
+    template_name = "student_edit.html"
+    context_object_name = "student"
     fields = [
         "first_name",
         "last_name",

@@ -18,7 +18,8 @@
     <p><strong>Grade:</strong> {{ student.grade }}</p>
 </div>
 
+<a href="{% url 'student-edit' student.pk %}">Edit Student</a>
+<br/>
 <a href="{% url 'student-list' %}">Back to Student List</a>
-
 </body>
 </html>
