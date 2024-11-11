@@ -7,23 +7,26 @@
     <!-- Search bar -->
     <form method="GET" action="{% url 'student-list' %}">
         <input type="text" name="q" value="{{ query }}" placeholder="Search by name">
-        <button type="submit">Search</button>
+        <button class="mdc-button mdc-button--raised" type="submit">Search</button>
     </form>
     {% if pagination %}
         <table>
             <thead>
             <tr>
+                <th>#</th>
                 <th>First Name</th>
                 <th>Last Name</th>
                 <th>Email</th>
                 <th>DoB</th>
                 <th>Enrollment Date</th>
                 <th>Grade</th>
+                <th>Actions</th>
             </tr>
             </thead>
             <tbody>
             {% for student in pagination %}
                 <tr>
+                    <td>{{ forloop.counter }}</td>
                     <td>{{ student.first_name }}</td>
                     <td>{{ student.last_name }}</td>
                     <td>{{ student.email }}</td>
@@ -32,6 +35,7 @@
                     <td>{{ student.grade }}</td>
                     <td>
                         <a href="{% url 'student-detail' student.pk %}">View</a>
+                        &nbsp;|&nbsp;
                         <a href="{% url 'student-delete' student.pk %}">Delete</a>
                     </td>
                 </tr>
@@ -60,5 +64,5 @@
             {% endif %}
         </span>
     </div>
-    <a href="{% url 'student-create' %}">Add New Student</a>
+    <a class="material-link" href="{% url 'student-create' %}">Add New Student</a>
 {% endblock %}
