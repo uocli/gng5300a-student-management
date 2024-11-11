@@ -3,15 +3,11 @@
 {% block title %}Edit Student{% endblock %}
 
 {% block content %}
-
     <h1>Edit Student</h1>
-
+    <a href="{% url 'student-list' %}">Back to Student List</a>
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit">Edit Student</button>
     </form>
-
-    <a href="{% url 'student-list' %}">Back to Student List</a>
-
 {% endblock %}
