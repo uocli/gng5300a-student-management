@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student List</title>
+{#    <link rel="stylesheet" href="{% static 'css/styles.css' %}">#}
+</head>
+<body>
+    <h1>Student List</h1>
+    {% if students %}
+        <table>
+            <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+                    <th>DoB</th>
+                    <th>Enrollment Date</th>
+                    <th>Grade</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for student in students %}
+                    <tr>
+                        <td>{{ student.name }}</td>
+                        <td>{{ student.age }}</td>
+                        <td>{{ student.grade }}</td>
+                        <td><a href="{% url 'student_detail' student.pk %}">View Details</a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No students found.</p>
+    {% endif %}
+{#    <a href="{% url 'student_create' %}">Add New Student</a>#}
+</body>
+</html>
