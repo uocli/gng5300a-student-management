@@ -1,5 +1,6 @@
-from django.urls import reverse_lazy
-from django.views.generic import ListView, DetailView, CreateView, UpdateView
+from django.shortcuts import render, get_object_or_404, redirect
+from .forms import StudentForm
+from django.views.generic import ListView, DetailView
 from .models import Student
 
 
@@ -17,31 +18,34 @@ class StudentDetailView(DetailView):
     context_object_name = "student"
 
 
-# Create a new student
-class StudentCreateView(CreateView):
-    model = Student
-    template_name = "student_create.html"
-    fields = [
-        "first_name",
-        "last_name",
-        "email",
-        "date_of_birth",
-        "enrollment_date",
-        "grade",
-    ]
-    success_url = reverse_lazy("student-list")
+# View to create a new student
+def student_create(request):
+    if request.method == "POST":
+        form = StudentForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("student_list")
+        else:
+            # If the form is not valid, it will contain errors
+            print(form.errors)
+    else:
+        form = StudentForm()
+
+    return render(request, "student_create.html", {"form": form})
 
 
-class StudentUpdateView(UpdateView):
-    model = Student
-    template_name = "student_edit.html"
-    context_object_name = "student"
-    fields = [
-        "first_name",
-        "last_name",
-        "email",
-        "date_of_birth",
-        "enrollment_date",
-        "grade",
-    ]
-    success_url = reverse_lazy("student-list")
+# View to edit an existing student
+def student_edit(request, pk):
+    student = get_object_or_404(Student, id=pk)
+
+    if request.method == "POST":
+        form = StudentForm(request.POST, instance=student)
+        if form.is_valid():
+            form.save()
+            return redirect("student-list")
+        else:
+            print(form.errors)
+    else:
+        form = StudentForm(instance=student)
+
+    return render(request, "student_edit.html", {"form": form})
