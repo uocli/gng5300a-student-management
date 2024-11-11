@@ -13,6 +13,10 @@ class StudentForm(forms.ModelForm):
             "enrollment_date",
             "grade",
         ]
+        widgets = {
+            "date_of_birth": forms.DateInput(attrs={"type": "date"}),
+            "enrollment_date": forms.DateInput(attrs={"type": "date"}),
+        }
 
     # Custom validation for the email field
     def clean_email(self):

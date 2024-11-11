@@ -4,6 +4,11 @@
 
 {% block content %}
     <h1>Student List</h1>
+    <!-- Search bar -->
+    <form method="GET" action="{% url 'student-list' %}">
+        <input type="text" name="q" value="{{ query }}" placeholder="Search by name">
+        <button type="submit">Search</button>
+    </form>
     {% if students %}
         <table>
             <thead>
