@@ -1,21 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create Student</title>
-</head>
-<body>
+{% extends 'base.html' %}
 
-<h1>Create New Student</h1>
+{% block title %}Create Student{% endblock %}
 
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Add Student</button>
-</form>
+{% block content %}
 
-<a href="{% url 'student-list' %}">Back to Student List</a>
+    <h1>Create Student</h1>
 
-</body>
-</html>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Create Student</button>
+    </form>
+
+    <a href="{% url 'student-list' %}">Back to Student List</a>
+
+{% endblock %}

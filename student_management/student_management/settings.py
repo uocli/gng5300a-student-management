@@ -17,7 +17,8 @@ ALLOWED_HOSTS = []
 
 # Redirect to the login page if user is not authenticated
 LOGIN_URL = "login"
-LOGIN_REDIRECT_URL = "student-list"
+LOGIN_REDIRECT_URL = "/"
+LOGOUT_REDIRECT_URL = "/"
 
 
 # Application definition

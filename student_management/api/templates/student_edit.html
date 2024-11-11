@@ -1,21 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Student</title>
-</head>
-<body>
+{% extends 'base.html' %}
 
-<h1>Edit Student</h1>
+{% block title %}Edit Student{% endblock %}
 
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Update Student</button>
-</form>
+{% block content %}
 
-<a href="{% url 'student-list' %}">Back to Student List</a>
+    <h1>Edit Student</h1>
 
-</body>
-</html>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Edit Student</button>
+    </form>
+
+    <a href="{% url 'student-list' %}">Back to Student List</a>
+
+{% endblock %}
