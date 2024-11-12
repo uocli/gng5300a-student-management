@@ -7,7 +7,7 @@
     <!-- Search bar -->
     <form method="GET" action="{% url 'student-list' %}">
         <input type="text" name="q" value="{{ query }}" placeholder="Search by name">
-        <button class="mdc-button mdc-button--raised" type="submit">Search</button>
+        <button class="material-button" type="submit">Search</button>
     </form>
     {% if pagination %}
         <table>
@@ -64,5 +64,5 @@
             {% endif %}
         </span>
     </div>
-    <a class="material-link" href="{% url 'student-create' %}">Add New Student</a>
+    <a class="material-button" href="{% url 'student-create' %}">Add New Student</a>
 {% endblock %}

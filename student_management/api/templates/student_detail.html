@@ -4,7 +4,7 @@
 
 {% block content %}
     <h1>Student Details</h1>
-    <a href="{% url 'student-list' %}">Back to Student List</a>
+    <a class="material-button" href="{% url 'student-list' %}">Back to Student List</a>
     <table>
         <tr>
             <th>First Name</th>
@@ -23,5 +23,5 @@
             <td>{{ student.grade }}</td>
         </tr>
     </table>
-    <a href="{% url 'student-edit' student.pk %}">Edit Student</a>
+    <a class="material-button" href="{% url 'student-edit' student.pk %}">Edit Student</a>
 {% endblock %}
