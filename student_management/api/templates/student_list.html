@@ -4,6 +4,7 @@
 
 {% block content %}
     <h4>Student List</h4>
+    <a class="material-button" href="{% url 'student-create' %}">Add New Student</a>
     <!-- Search bar -->
     <form method="GET" action="{% url 'student-list' %}">
         <input type="text" name="q" value="{{ query }}" placeholder="Search by name">
@@ -63,5 +64,4 @@
             {% endif %}
         </span>
     </div>
-    <a class="material-button" href="{% url 'student-create' %}">Add New Student</a>
 {% endblock %}
