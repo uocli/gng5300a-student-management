@@ -6,7 +6,7 @@
     <h4>Are you sure you want to delete the student?</h4>
     <p>Student: {{ student.first_name }} {{ student.last_name }}</p>
 
-    <form method="POST">
+    <form method="POST" style="text-align: center">
         {% csrf_token %}
         <button class="material-button material-button-error" type="submit">Yes, delete this student</button>
         <a class="material-button" href="{% url 'student-list' %}">Cancel</a>
