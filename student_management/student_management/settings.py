@@ -16,8 +16,8 @@ SECRET_KEY = "django-insecure-12r!pt-%r##2%g!kn9hdf429j@fp(y552s+)cqwqf-v+8r)+u0
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    "localhost",
-    "student-management-tkhh.onrender.com",
+    "http://127.0.0.1:8000/",
+    "https://student-management-tkhh.onrender.com",
 ]
 
 # Redirect to the login page if user is not authenticated
