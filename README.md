@@ -17,3 +17,12 @@ python manage.py makemigrations
 python manage.py migrate
 python manage.py runserver
 ```
+
+## Users Creation
+
+Create a superuser to access the Admin panel where you can create general users to access the authenticated pages. Also, you can manage the students from the Admin panel.
+
+```shell
+cd student_management
+python manage.py createsuperuser
+```
