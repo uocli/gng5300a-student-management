@@ -4,7 +4,7 @@
 
 This is a student management system that allows you to add, delete, update and view students. This project is part of the requirements of the course GNG5300[A].
 
-## Installation
+## Installation and Running Locally
 
 ```shell
 git clone https://github.com/uocli/gng5300a-student-management.git
