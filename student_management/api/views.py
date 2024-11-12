@@ -7,23 +7,20 @@ from .models import Student
 from django.db.models import Q
 
 
-# Display a list of all students
-class StudentListView(ListView):
-    model = Student
-    template_name = "student_list.html"
-    context_object_name = "students"
-
-
-# Display the details of a single student
 class StudentDetailView(DetailView):
+    """
+    This view will display the details of a single student.
+    """
     model = Student
     template_name = "student_detail.html"
     context_object_name = "student"
 
 
-# View to create a new student
 @login_required
 def student_create(request):
+    """
+    This view will handle the creation of a new student.
+    """
     if request.method == "POST":
         form = StudentForm(request.POST)
         if form.is_valid():
@@ -38,9 +35,11 @@ def student_create(request):
     return render(request, "student_create.html", {"form": form})
 
 
-# View to edit an existing student
 @login_required
 def student_edit(request, pk):
+    """
+    This view will handle the editing of an existing student.
+    """
     student = get_object_or_404(Student, id=pk)
 
     if request.method == "POST":
@@ -58,6 +57,9 @@ def student_edit(request, pk):
 
 @login_required
 def delete_student(request, pk):
+    """
+    This view will handle the deletion of a student.
+    """
     student = get_object_or_404(Student, pk=pk)
 
     if request.method == "POST":
@@ -68,6 +70,9 @@ def delete_student(request, pk):
 
 
 def student_list(request):
+    """
+    This view will display a list of all students.
+    """
     query = request.GET.get("q", "")  # Get the search query from the GET request
     students = Student.objects.all()  # Start with all students
 
