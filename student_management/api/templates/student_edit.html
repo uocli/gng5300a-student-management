@@ -7,7 +7,7 @@
     <a class="material-button" href="{% url 'student-list' %}">Back to Student List</a>
     <form method="post">
         {% csrf_token %}
-        {{ form.as_p }}
+        {{ form.as_div }}
         <button class="material-button material-button-error" type="submit">Update</button>
     </form>
 {% endblock %}
