@@ -3,11 +3,11 @@
 {% block title %}Edit Student{% endblock %}
 
 {% block content %}
-    <h1>Edit Student</h1>
+    <h4>Edit Student</h4>
     <a class="material-button" href="{% url 'student-list' %}">Back to Student List</a>
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
-        <button class="material-button" type="submit">Edit Student</button>
+        <button class="material-button material-button-error" type="submit">Update</button>
     </form>
 {% endblock %}
