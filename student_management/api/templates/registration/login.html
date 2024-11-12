@@ -1,29 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-</head>
-<body>
+{% extends 'base.html' %}
 
-<h1>Login</h1>
+{% block title %}Login{% endblock %}
 
-<form method="post">
-    {% csrf_token %}
-    <label for="id_username">Username:</label>
-    <input type="text" name="username" id="id_username" required><br><br>
+{% block content %}
+    
+    <form method="post">
+        {% csrf_token %}
+        <label for="id_username">Username</label>
+        <input type="text" name="username" id="id_username" required>
 
-    <label for="id_password">Password:</label>
-    <input type="password" name="password" id="id_password" required><br><br>
+        <label for="id_password">Password</label>
+        <input type="password" name="password" id="id_password" required>
 
-    <button type="submit">Login</button>
-</form>
+        <button class="material-button" type="submit">Login</button>
+    </form>
 
-{% if form.errors %}
-    <p style="color: red;">{{ form.errors }}</p>
-{% endif %}
-
-
-</body>
-</html>
+    {% if form.errors %}
+        <p style="color: red;">{{ form.errors }}</p>
+    {% endif %}
+{% endblock %}
