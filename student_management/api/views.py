@@ -1,6 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
 from django.shortcuts import render, get_object_or_404, redirect
+from django.conf import settings
 from .forms import StudentForm
 from django.views.generic import ListView, DetailView
 from .models import Student
@@ -73,15 +74,15 @@ def student_list(request):
     """
     This view will display a list of all students.
     """
-    query = request.GET.get("q", "")  # Get the search query from the GET request
-    students = Student.objects.all()  # Start with all students
+    query = request.GET.get("q", "")
+    students = Student.objects.all().order_by('id')
 
     if query:
         # Filter students by first name or last name (case-insensitive)
         students = students.filter(
             Q(first_name__icontains=query) | Q(last_name__icontains=query)
-        )
-    paginator = Paginator(students, 5)
+        ).order_by('id')
+    paginator = Paginator(students, settings.PAGE_SIZE)
     page_number = request.GET.get("page")
     pagination = paginator.get_page(page_number)
 
